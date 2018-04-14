@@ -1,0 +1,14 @@
+.gamepiece {
+  border-radius: 50%;
+  width: 65%;
+  height: 65%;
+  align-self: center;
+}
+
+.gamepiece.color-black {
+  background-color: black;
+}
+
+.gamepiece.color-white {
+  background-color: white;
+}

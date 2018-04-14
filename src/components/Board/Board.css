@@ -1,0 +1,14 @@
+.Board {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Board.row-of-8 .square {
+  width: 12.5%;
+  height: 12.5%;
+}
+
+.Board.row-of-10 .square {
+  width: 10%;
+  height: 10%;
+}

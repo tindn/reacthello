@@ -1,0 +1,9 @@
+.square {
+  background-color: #6cff45;
+  display: flex;
+  justify-content: center;
+}
+
+.square.darker {
+  background-color: green;
+}
