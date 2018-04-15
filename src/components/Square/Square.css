@@ -7,3 +7,26 @@
 .square.darker {
   background-color: green;
 }
+
+.square.hint-illegal:hover:after {
+  content: 'x';
+  color: red;
+  opacity: 0.5;
+  text-align: center;
+  font-size: 3rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.square.hint-legal:hover .gamepiece {
+  display: block;
+  opacity: 0.5;
+}
+
+.square.hint-legal.white:hover .gamepiece {
+  background-color: white;
+}
+
+.square.hint-legal.black:hover .gamepiece {
+  background-color: black;
+}

@@ -4,7 +4,7 @@ const DEFAULT_STATE = {
   boardSize: 8,
   gamePlays: [],
   nextPlayColor: 'black',
-  debugMode: true,
+  debugMode: false,
 };
 
 export default (state = DEFAULT_STATE, action) => {

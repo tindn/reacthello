@@ -6,6 +6,7 @@ const mapStateToProps = (state, ownProps) => ({
   gamePiece: state.App.gamePieces[ownProps.index],
   captures: state.App.captures[ownProps.index],
   debugMode: state.App.debugMode,
+  nextPlayColor: state.App.nextPlayColor,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
