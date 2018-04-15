@@ -12,3 +12,7 @@
 .gamepiece.color-white {
   background-color: white;
 }
+
+.gamepiece.color-transparent {
+  background-color: transparent;
+}

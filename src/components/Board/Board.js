@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Board.css';
 import Square from '../Square';
+import { getColumnNumber, getRowNumber } from '../../logic';
 
 const Board = props => {
   const size = props.size || 8;
@@ -23,9 +24,5 @@ const Board = props => {
 Board.propTypes = {
   size: PropTypes.number,
 };
-
-const getRowNumber = (index, size) => Math.floor(index / size) + 1;
-
-const getColumnNumber = (index, size) => index % size + 1;
 
 export default Board;

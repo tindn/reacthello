@@ -11,6 +11,14 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Reacthello</h1>
+          <form>
+            Debug:{' '}
+            <input
+              type="checkbox"
+              checked={this.props.debugMode}
+              onClick={this.props.toggleDebugMode}
+            />
+          </form>
         </header>
 
         <Board />

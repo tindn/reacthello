@@ -3,25 +3,39 @@ import PropTypes from 'prop-types';
 import './Square.css';
 import GamePiece from '../GamePiece';
 
-const Square = props => {
-  const gamePiece = props.gamePieces.find(piece => piece.index === props.index);
-  return (
-    <div
-      className={`square col-${props.column} row-${props.row} ${
-        (props.index + props.row) % 2 === 0 ? 'darker' : ''
-      }`}
-    >
-      {/* {props.index} */}
-      {gamePiece ? <GamePiece color={gamePiece.color} /> : null}
-    </div>
-  );
-};
+class Square extends React.Component {
+  render() {
+    console.log('square render', this.props.index, this.props.captures);
+    return (
+      <div
+        className={`square col-${this.props.column} row-${this.props.row} ${
+          (this.props.index + this.props.row) % 2 === 0 ? 'darker' : ''
+        }`}
+        onClick={() => {
+          if (this.props.gamePiece || !this.props.captures.length) {
+            return;
+          }
+          this.props.setGamePlay(this.props.captures);
+        }}
+      >
+        <GamePiece color={this.props.gamePiece || 'transparent'} />
+        {this.props.debugMode
+          ? `${this.props.index},
+          ${this.props.captures.length}`
+          : null}
+      </div>
+    );
+  }
+}
 
 Square.propTypes = {
   index: PropTypes.number.isRequired,
   column: PropTypes.number.isRequired,
   row: PropTypes.number.isRequired,
-  gamePieces: PropTypes.array.isRequired,
+  gamePiece: PropTypes.any,
+  setGamePlay: PropTypes.func.isRequired,
+  captures: PropTypes.array.isRequired,
+  debugMode: PropTypes.bool.isRequired,
 };
 
 export default Square;
