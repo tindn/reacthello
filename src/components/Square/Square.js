@@ -5,7 +5,7 @@ import GamePiece from '../GamePiece';
 
 class Square extends React.Component {
   render() {
-    console.log('square render', this.props.index, this.props.captures);
+    console.log('square render');
     return (
       <div
         className={`square col-${this.props.column} row-${this.props.row} ${
