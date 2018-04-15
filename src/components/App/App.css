@@ -11,10 +11,30 @@
 
 .App-header {
   display: flex;
-  background-color: #222;
+  background-color: #666464;
   height: 150px;
   padding: 20px;
   color: white;
+  justify-content: space-between;
+}
+
+.App-header .play-indicator .name-score {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.App-header .play-indicator .name-score.player-1.next {
+  background-color: black;
+}
+
+.App-header .play-indicator .name-score.player-2.next {
+  background-color: white;
+  color: black;
+}
+
+.App-header .play-indicator .name-score .score {
+  margin-left: 1rem;
 }
 
 .App-title {

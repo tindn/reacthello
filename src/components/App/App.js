@@ -45,8 +45,29 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Reacthello</h1>
+          <div className="brand">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Reacthello</h1>
+          </div>
+          <div className="play-indicator">
+            <div
+              className={`name-score player-1 ${
+                nextPlayer === '1' ? 'next' : ''
+              }`}
+            >
+              Player 1: <div className="score">{numberOfBlackPieces}</div>
+            </div>
+            <div
+              className={`name-score player-2 ${
+                nextPlayer === '2' ? 'next' : ''
+              }`}
+            >
+              Player 2: <div className="score">{numberOfWhitePieces}</div>
+            </div>
+            {this.props.debugMode ? (
+              <div>Possible Moves: {numberOfPossibleMoves}</div>
+            ) : null}
+          </div>
           <form className="config-form">
             <input
               type="checkbox"
@@ -55,19 +76,7 @@ class App extends React.Component {
             />Debug Mode
           </form>
         </header>
-        <div>
-          <div>
-            Player 1: {numberOfBlackPieces} x black{' '}
-            {this.props.nextPlayColor === 'black' ? 'Next' : ''}
-          </div>
-          <div>
-            Player 2: {numberOfWhitePieces} x white{' '}
-            {this.props.nextPlayColor === 'white' ? 'Next' : ''}
-          </div>
-          {this.props.debugMode ? (
-            <div>Possible Moves: {numberOfPossibleMoves}</div>
-          ) : null}
-        </div>
+
         <Board boardSize={this.props.boardSize} />
       </div>
     );
