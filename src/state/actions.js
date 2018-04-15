@@ -12,4 +12,10 @@ export const skipPlayer = {
   type: 'SKIP_PLAYER',
 };
 
-export const resetGame = { type: 'RESET_GAME' };
+export const resetGame = {
+  type: 'RESET_GAME',
+};
+
+export const togglePlayAgainstComputer = {
+  type: 'TOGGLE_PLAY_AGAINST_COMPUTER',
+};

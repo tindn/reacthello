@@ -39,7 +39,20 @@ class App extends React.Component {
       }, 500);
       setTimeout(() => {
         this.props.skipPlayer();
-      }, 1500);
+      }, 1000);
+    }
+
+    if (
+      this.props.playAgainstComputer &&
+      numberOfPossibleMoves &&
+      this.props.nextPlayColor === 'white'
+    ) {
+      const playIndex = this.props.captures.findIndex(
+        capture => capture.length
+      );
+      setTimeout(() => {
+        this.props.setGamePlay(playIndex, this.props.captures[playIndex]);
+      }, 1000);
     }
 
     return (
@@ -69,11 +82,20 @@ class App extends React.Component {
             ) : null}
           </div>
           <form className="config-form">
-            <input
-              type="checkbox"
-              checked={this.props.debugMode}
-              onChange={this.props.toggleDebugMode}
-            />Debug Mode
+            <div>
+              <input
+                type="checkbox"
+                checked={this.props.debugMode}
+                onChange={this.props.toggleDebugMode}
+              />Debug Mode
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                checked={this.props.playAgainstComputer}
+                onChange={this.props.togglePlayAgainstComputer}
+              />Play Against Computer
+            </div>
           </form>
         </header>
 
@@ -92,6 +114,7 @@ App.propTypes = {
   captures: PropTypes.array.isRequired,
   skipPlayer: PropTypes.func,
   resetGame: PropTypes.func,
+  setGamePlay: PropTypes.func,
 };
 
 export default App;

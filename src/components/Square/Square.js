@@ -5,7 +5,6 @@ import GamePiece from '../GamePiece';
 
 class Square extends React.Component {
   render() {
-    console.log('square render');
     const shadeClass =
       (this.props.index + this.props.row) % 2 === 0 ? 'darker' : '';
     const hint = this.props.captures.length ? 'legal' : 'illegal';

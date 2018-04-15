@@ -5,6 +5,7 @@ const DEFAULT_STATE = {
   gamePlays: [],
   nextPlayColor: 'black',
   debugMode: false,
+  playAgainstComputer: true,
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -51,6 +52,11 @@ export default (state = DEFAULT_STATE, action) => {
         ...DEFAULT_STATE,
         gamePieces: newGamePieces,
       });
+    case 'TOGGLE_PLAY_AGAINST_COMPUTER':
+      return {
+        ...state,
+        playAgainstComputer: !state.playAgainstComputer,
+      };
     default:
       return state;
   }
