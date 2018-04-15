@@ -90,6 +90,16 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         nextPlayColor: state.nextPlayColor === 'black' ? 'white' : 'black',
       });
+    case 'RESET_GAME':
+      const newGamePieces = Array(state.boardSize ** 2).fill(false);
+      newGamePieces[27] = 'white';
+      newGamePieces[28] = 'black';
+      newGamePieces[35] = 'black';
+      newGamePieces[36] = 'white';
+      return addCapturesToState({
+        ...DEFAULT_STATE,
+        gamePieces: newGamePieces,
+      });
     default:
       return state;
   }

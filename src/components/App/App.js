@@ -6,6 +6,7 @@ import Board from '../Board';
 
 class App extends React.Component {
   render() {
+    const nextPlayer = this.props.nextPlayColor === 'black' ? '1' : '2';
     const numberOfWhitePieces = this.props.gamePieces.filter(
       piece => piece === 'white'
     ).length;
@@ -17,10 +18,28 @@ class App extends React.Component {
     ).length;
     const gameEnded =
       this.props.gamePieces.filter(piece => !piece).length === 0;
+    if (gameEnded) {
+      setTimeout(() => {
+        if (
+          window.confirm(
+            `Thank you for playing.\nPlayer 1: ${numberOfBlackPieces} pieces.\nPlayer 2: ${numberOfWhitePieces} pieces.\nPlayer ${
+              numberOfBlackPieces > numberOfWhitePieces ? '1' : '2'
+            } is the winner!\nStart a new game?`
+          )
+        ) {
+          this.props.resetGame();
+        }
+      }, 500);
+    }
     if (!numberOfPossibleMoves && !gameEnded) {
       setTimeout(() => {
+        window.alert(
+          `No moves available for Player ${nextPlayer}. Skipping turn...`
+        );
+      }, 500);
+      setTimeout(() => {
         this.props.skipPlayer();
-      }, 2000);
+      }, 1500);
     }
 
     return (
@@ -63,6 +82,7 @@ App.propTypes = {
   gamePieces: PropTypes.array.isRequired,
   captures: PropTypes.array.isRequired,
   skipPlayer: PropTypes.func,
+  resetGame: PropTypes.func,
 };
 
 export default App;

@@ -16,5 +16,8 @@ const mapDispatchToProps = dispatch => ({
   skipPlayer: () => {
     dispatch({ type: 'SKIP_PLAYER' });
   },
+  resetGame: () => {
+    dispatch({ type: 'RESET_GAME' });
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
