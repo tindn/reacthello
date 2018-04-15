@@ -7,3 +7,9 @@ export const setGamePlay = (index, captures) => ({
 export const toggleDebugMode = {
   type: 'TOGGLE_DEBUG_MODE',
 };
+
+export const skipPlayer = {
+  type: 'SKIP_PLAYER',
+};
+
+export const resetGame = { type: 'RESET_GAME' };

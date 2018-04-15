@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from './App';
-import { toggleDebugMode } from '../../state/actions';
+import { toggleDebugMode, skipPlayer, resetGame } from '../../state/actions';
 const mapStateToProps = state => ({
   boardSize: state.App.boardSize,
   debugMode: state.App.debugMode,
@@ -14,10 +14,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleDebugMode);
   },
   skipPlayer: () => {
-    dispatch({ type: 'SKIP_PLAYER' });
+    dispatch(skipPlayer);
   },
   resetGame: () => {
-    dispatch({ type: 'RESET_GAME' });
+    dispatch(resetGame);
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
