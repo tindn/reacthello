@@ -52,7 +52,7 @@ class App extends React.Component {
       );
       setTimeout(() => {
         this.props.setGamePlay(playIndex, this.props.captures[playIndex]);
-      }, 1000);
+      }, 500);
     }
 
     return (
@@ -75,7 +75,8 @@ class App extends React.Component {
                 nextPlayer === '2' ? 'next' : ''
               }`}
             >
-              Player 2: <div className="score">{numberOfWhitePieces}</div>
+              {this.props.playAgainstComputer ? 'Computer' : 'Player 2'}:
+              <div className="score">{numberOfWhitePieces}</div>
             </div>
             {this.props.debugMode ? (
               <div>Possible Moves: {numberOfPossibleMoves}</div>

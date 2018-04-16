@@ -24,10 +24,14 @@ class Square extends React.Component {
         }}
       >
         <GamePiece color={this.props.gamePiece || 'transparent'} />
-        {this.props.debugMode
-          ? `${this.props.index},
-          ${this.props.captures.length}`
-          : null}
+        {this.props.debugMode ? (
+          <div>
+            <p>{this.props.index}</p>
+            <p>
+              <strong>{this.props.captures.length}</strong>
+            </p>
+          </div>
+        ) : null}
       </div>
     );
   }

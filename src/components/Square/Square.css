@@ -8,7 +8,7 @@
   background-color: green;
 }
 
-.square.hint-illegal:hover:after {
+.square.hint-illegal:hover:before {
   content: 'x';
   color: red;
   opacity: 0.5;
