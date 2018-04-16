@@ -1,6 +1,6 @@
 # Reacthello
 
-Welcome to Reacthello, a web app built in React for the [Othello/Reversi](http://www.othelloonline.org/){:target="\_blank"} game.
+Welcome to Reacthello, a web app built in React for the [Othello/Reversi](http://www.othelloonline.org/) game.
 
 To start playing:
 
