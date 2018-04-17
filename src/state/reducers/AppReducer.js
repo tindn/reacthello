@@ -1,22 +1,32 @@
 import { getCaptures } from '../../logic';
 
-const DEFAULT_STATE = {
+const addCapturesToState = state => {
+  const captures = state.gamePieces.map((piece, index) => {
+    if (piece) {
+      return [];
+    }
+    return getCaptures(index, state);
+  });
+  return { ...state, captures };
+};
+
+const gamePieces = Array(8 ** 2).fill(false);
+gamePieces[27] = 'white';
+gamePieces[28] = 'black';
+gamePieces[35] = 'black';
+gamePieces[36] = 'white';
+
+const DEFAULT_STATE = addCapturesToState({
   boardSize: 8,
   gamePlays: [],
   nextPlayColor: 'black',
   debugMode: false,
   playAgainstComputer: true,
-};
+  gamePieces,
+});
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case '@@INIT':
-      const gamePieces = Array(state.boardSize ** 2).fill(false);
-      gamePieces[27] = 'white';
-      gamePieces[28] = 'black';
-      gamePieces[35] = 'black';
-      gamePieces[36] = 'white';
-      return addCapturesToState({ ...state, gamePieces });
     case 'GAME_PLAY_OCCURRED':
       const newPieces = [...state.gamePieces];
       newPieces[action.index] = state.nextPlayColor;
@@ -43,15 +53,7 @@ export default (state = DEFAULT_STATE, action) => {
         nextPlayColor: state.nextPlayColor === 'black' ? 'white' : 'black',
       });
     case 'RESET_GAME':
-      const newGamePieces = Array(state.boardSize ** 2).fill(false);
-      newGamePieces[27] = 'white';
-      newGamePieces[28] = 'black';
-      newGamePieces[35] = 'black';
-      newGamePieces[36] = 'white';
-      return addCapturesToState({
-        ...DEFAULT_STATE,
-        gamePieces: newGamePieces,
-      });
+      return DEFAULT_STATE;
     case 'TOGGLE_PLAY_AGAINST_COMPUTER':
       return {
         ...state,
@@ -60,14 +62,4 @@ export default (state = DEFAULT_STATE, action) => {
     default:
       return state;
   }
-};
-
-const addCapturesToState = state => {
-  const captures = state.gamePieces.map((piece, index) => {
-    if (piece) {
-      return [];
-    }
-    return getCaptures(index, state);
-  });
-  return { ...state, captures };
 };
